@@ -1,24 +1,63 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| hn       | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+| name     | string | null: false |
+| name_kana| string | null: false |
+| birthday | string | null: false |
 
-* Ruby version
+### Association
+- has_many :goods
+- has_many :comments
 
-* System dependencies
 
-* Configuration
+## goods テーブル
 
-* Database creation
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| name   | string | null: false |
+| price  | string | null: false |
+| category| string | null: false |
+| status | string | null: false |
+| delivery| string | null: false |
+| area   | string | null: false |
+| shipping date| string | null: false |
+| like   | string | null: false |
 
-* Database initialization
 
-* How to run the test suite
+### Association
+- has_many :comments
+- belongs_to :users
+- belongs_to :management
 
-* Services (job queues, cache servers, search engines, etc.)
+## management テーブル
 
-* Deployment instructions
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| user_id | references | null: false, foreign_key: true |
+| goods_id | references | null: false, foreign_key: true |
+| status  | references | null: false, foreign_key: true |
+| date    | references | null: false, foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :room
+- belongs_to :user
+
+## comments テーブル
+
+| Column  | Type    | Options                        |
+| ------- |  ------- | ------------------------------ |
+| content    | string  |
+| user_id | references | null: false, foreign_key: true |
+| room_id | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :users
+- belongs_to :goods

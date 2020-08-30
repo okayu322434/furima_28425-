@@ -1,15 +1,18 @@
 # テーブル設計
+<!--https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#G1WmLXD5sMTlkkS32R9o7Q1Gpmu7joY66w-->
 
 ## users テーブル
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-| hn       | string | null: false |
+| nickname | string | null: false |
 | email    | string | null: false |
 | password | string | null: false |
-| name     | string | null: false |
-| name_kana| string | null: false |
-| birthday | string | null: false |
+| family_name| string | null: false |
+| first_name| string | null: false |
+| family_name_kana| string | null: false |
+| first_name_kana| string | null: false |
+| birthday | date   | null: false |
 
 ### Association
 - has_many :goods
@@ -21,14 +24,8 @@
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | name   | string | null: false |
-| price  | string | null: false |
-| category| string | null: false |
-| status | string | null: false |
-| delivery| string | null: false |
-| area   | string | null: false |
-| shipping date| string | null: false |
-| like   | string | null: false |
-
+| price  | integer| null: false |
+| comment| integer| null: false |
 
 ### Association
 - has_many :comments
@@ -41,12 +38,9 @@
 | ------- | ------- | ------------------------------ |
 | user_id | references | null: false, foreign_key: true |
 | goods_id | references | null: false, foreign_key: true |
-| status  | references | null: false, foreign_key: true |
-| date    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :room
 - belongs_to :user
 
 ## comments テーブル

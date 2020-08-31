@@ -74,7 +74,7 @@
 | prefecture_id| integer | null: false |
 | city     | string | null: false |
 | address  | string | null: false |
-| buildeing| string | null: false |
+| buildeing| string | |
 | phone_number| string | null: false |
 
 

@@ -17,12 +17,13 @@
 ### Association
 - has_many :goods
 - has_many :comments
-
+- has_many :managements
 
 ## goods テーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
+| users   | references | foreign_key: true |
 | name   | string | null: false |
 | price  | integer| null: false |
 | comment| text   | null: false |
@@ -69,9 +70,7 @@
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-| management|  | null: false |
-| plyce    | string | null: false |
-| pay      | string | null: false |
+| management| references | foreign_key: true |
 | postcode | string | null: false |
 | prefecture_id| integer | null: false |
 | ward     | string | null: false |

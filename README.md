@@ -25,7 +25,7 @@
 | ------ | ------ | ----------- |
 | name   | string | null: false |
 | price  | integer| null: false |
-| comment| string| null: false |
+| comment| text   | null: false |
 | price  | integer| null: false |
 | category| integer| null: false |
 | status | integer| null: false |
@@ -36,19 +36,21 @@
 ### Association
 - has_many :comments
 - belongs_to :user
-- has_many :management
+- has_one :management
+- has_one :shipping
 
 ## management テーブル
 
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
 | user | references | null: false, foreign_key: true |
-| goods | references | null: false, foreign_key: true |
+| good | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :good
+- has_one :shipping
 
 ## comments テーブル
 
@@ -67,11 +69,11 @@
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-| goods    | string | null: false |
+| management|  | null: false |
 | plyce    | string | null: false |
 | pay      | string | null: false |
 | postcode | string | null: false |
-| prefecture| string | null: false |
+| prefecture_id| integer | null: false |
 | ward     | string | null: false |
 | town     | string | null: false |
 | no       | string | null: false |
@@ -80,6 +82,4 @@
 
 ### Association
 
-- belongs_to :users
-- belongs_to :goods
 - belongs_to :management

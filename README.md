@@ -25,19 +25,25 @@
 | ------ | ------ | ----------- |
 | name   | string | null: false |
 | price  | integer| null: false |
-| comment| integer| null: false |
+| comment| string| null: false |
+| price  | integer| null: false |
+| category| integer| null: false |
+| status | integer| null: false |
+| delivery| integer| null: false |
+| area   | integer| null: false |
+| shipping date| integer| null: false |
 
 ### Association
 - has_many :comments
-- belongs_to :users
+- belongs_to :user
 - belongs_to :management
 
 ## management テーブル
 
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| goods_id | references | null: false, foreign_key: true |
+| user | references | null: false, foreign_key: true |
+| goods | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -50,6 +56,19 @@
 | content    | string  |
 | user_id | references | null: false, foreign_key: true |
 | room_id | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :users
+- belongs_to :goods
+
+##  shipping テーブル
+
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| goods    | string | null: false |
+| plyce    | string | null: false |
+| pay      | string | null: false |
 
 ### Association
 

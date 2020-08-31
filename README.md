@@ -38,7 +38,6 @@
 - has_many :comments
 - belongs_to :user
 - has_one :management
-- has_one :shipping
 
 ## management テーブル
 

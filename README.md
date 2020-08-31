@@ -23,7 +23,7 @@
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| users   | references | foreign_key: true |
+| user   | references | foreign_key: true |
 | name   | string | null: false |
 | price  | integer| null: false |
 | comment| text   | null: false |
@@ -73,9 +73,10 @@
 | management| references | foreign_key: true |
 | postcode | string | null: false |
 | prefecture_id| integer | null: false |
-| ward     | string | null: false |
-| town     | string | null: false |
-| no       | string | null: false |
+| city     | string | null: false |
+| address  | string | null: false |
+| buildeing| string | null: false |
+| phone_number| string | null: false |
 
 
 

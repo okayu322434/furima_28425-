@@ -36,7 +36,7 @@
 ### Association
 - has_many :comments
 - belongs_to :user
-- belongs_to :management
+- has_many :management
 
 ## management テーブル
 
@@ -48,14 +48,15 @@
 ### Association
 
 - belongs_to :user
+- belongs_to :good
 
 ## comments テーブル
 
 | Column  | Type    | Options                        |
 | ------- |  ------- | ------------------------------ |
 | content    | string  |
-| user_id | references | null: false, foreign_key: true |
-| room_id | references | null: false, foreign_key: true |
+| user | references | null: false, foreign_key: true |
+| room | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -69,8 +70,16 @@
 | goods    | string | null: false |
 | plyce    | string | null: false |
 | pay      | string | null: false |
+| postcode | string | null: false |
+| prefecture| string | null: false |
+| ward     | string | null: false |
+| town     | string | null: false |
+| no       | string | null: false |
+
+
 
 ### Association
 
 - belongs_to :users
 - belongs_to :goods
+- belongs_to :management

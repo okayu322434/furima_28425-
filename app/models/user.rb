@@ -6,19 +6,16 @@ class User < ApplicationRecord
 
          validates :nickname, presence: true
          validates :email, presence: true, uniqueness: true
-
          validates :encrypted_password, presence: true, length: { minimum: 6 }
          validates :first_name, presence: true
          validates :last_name, presence: true
          validates :first_name_kana, presence: true,
                     format: {
-                    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-                    message: "全角カタカナのみで入力して下さい"}
+                    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,}
 
          validates :last_name_kana, presence: true,
                     format: {
-                    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-                    message: "全角カタカナのみで入力して下さい"}
+                    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,}
          validates :birthday, presence: true
 
 end

@@ -32,7 +32,7 @@
 | status_id | integer| null: false |
 | delivery_id| integer| null: false |
 | area_id   | integer| null: false |
-| shipping date_id| integer| null: false |
+| shippingdate_id| integer| null: false |
 
 ### Association
 - has_many :comments

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root "goods#index"
   # resources :users, only: [:sign_up]
   # resources :new, to: 'goots#get'
-  resources :goods
+  resources :goods 
 
 end

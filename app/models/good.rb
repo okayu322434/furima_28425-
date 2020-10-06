@@ -13,6 +13,8 @@ with_options presence: true do
   validates :name
   validates :comment
   validates :price
+  validates :price, :numericality => { :greater_than => 299 }
+  validates :price, :numericality => { :less_than => 10000000 }
 end
 
 with_options numericality: { other_than: 0, message: 'Select' } do

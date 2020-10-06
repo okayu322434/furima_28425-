@@ -20,4 +20,6 @@ class User < ApplicationRecord
                     with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,}
          validates :birthday, presence: true
 
+         has_many :goods
+
 end

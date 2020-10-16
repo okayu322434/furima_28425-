@@ -21,7 +21,7 @@ class GoodsController < ApplicationController
     if @good.update(goods_params)
     redirect_to action: :show
   else
-    render :new
+    render :edit
     end
   end
 

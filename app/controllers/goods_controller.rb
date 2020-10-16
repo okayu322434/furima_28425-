@@ -17,15 +17,13 @@ class GoodsController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def update
     @good.update(goods_params)
+    if @good.save
     redirect_to action: :show
+  else
+    render :new
+  end
   end
 
   private

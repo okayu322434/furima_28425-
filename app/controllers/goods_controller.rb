@@ -17,14 +17,13 @@ class GoodsController < ApplicationController
     end
   end
 
-  # def update
-  #   @good.update(goods_params)
-  #   if @good.save
-  #   redirect_to action: :show
-  # else
-  #   render :new
-  #   end
-  # end
+  def update
+    if @good.update(goods_params)
+    redirect_to action: :show
+  else
+    render :new
+    end
+  end
 
   # def destroy
   #   @good = Good.find(params[:id])

@@ -25,11 +25,11 @@ class GoodsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @good = Good.find(params[:id])
-  #   @good.destroy
-  #   redirect_to root_path
-  # end
+  def destroy
+    @good = Good.find(params[:id])
+    @good.destroy
+    redirect_to root_path
+  end
 
   private
   def goods_params

@@ -1,5 +1,5 @@
 class GoodsController < ApplicationController
-  before_action :set_good, only: [:show, :edit, :update]
+  before_action :set_good, only: [:show, :edit, :update, :destroy]
 
   def index
     @goods = Good.all
@@ -26,9 +26,10 @@ class GoodsController < ApplicationController
   end
 
   def destroy
-    @good = Good.find(params[:id])
+    if user_signed_in? && current_user.id == @good.user_id
     @good.destroy
     redirect_to root_path
+    end
   end
 
   private

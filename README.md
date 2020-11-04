@@ -39,7 +39,7 @@
 - belongs_to :user
 - has_one :management
 
-## management テーブル
+## order テーブル
 
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
@@ -69,7 +69,7 @@
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-| management| references | foreign_key: true |
+| order    | references | foreign_key: true |
 | postcode | string | null: false |
 | prefecture_id| integer | null: false |
 | city     | string | null: false |

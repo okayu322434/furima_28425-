@@ -1,0 +1,41 @@
+class OrdersController < ApplicationController
+  def index
+    @good = Good.find(params[:good_id])
+      if user_signed_in? && current_user.id == @good.user_id
+      redirect_to root_path
+      else
+      @order = AddressForm.new
+      end
+  end
+
+  def create
+    @good = Good.find(params[:good_id])
+    @order = AddressForm.new(order_params)
+    if @order.valid?
+      pay_item
+      @order.save
+      return redirect_to root_path
+    else
+      render 'index'
+    end
+
+
+
+  end
+
+  private
+
+  def order_params
+    params.permit(:price, :postcode, :prefecture_id, :city, :address, :buildeing, :phone_number, :token, :good_id , :image).merge(user_id: current_user.id)
+  end
+
+  def pay_item
+    @good = Good.find(params[:good_id])
+    Payjp.api_key = "sk_test_テスト秘密鍵" 
+    Payjp::Charge.create(
+      amount: @good.price,  # 商品の値段
+      card: order_params[:token],    # カードトークン
+      currency: 'jpy'                 # 通貨の種類（日本円）
+    )
+  end
+end

@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   private
 
   def good_params
-  Good.find(params[:good_id])
+    @good =Good.find(params[:good_id])
   end
 
   def order_params
@@ -34,7 +34,6 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    @good = Good.find(params[:good_id])
     Payjp.api_key = "sk_test_テスト秘密鍵" 
     Payjp::Charge.create(
       amount: @good.price,  # 商品の値段

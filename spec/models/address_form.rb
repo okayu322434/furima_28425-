@@ -29,6 +29,12 @@ RSpec.describe AddressForm, type: :model do
         expect(@good.errors.full_messages).to include("Prefecture can't be blank")
       end
 
+      it "prefecture_idが0の時は登録できないこと" do
+        @good.prefecture_id = "0"
+        @good.valid?
+        expect(@good.errors.full_messages).to include("Prefecture can't be blank")
+      end
+
       it "tokenが空では登録できないこと" do
         @good.token = nil
         @good.valid?
@@ -41,8 +47,8 @@ RSpec.describe AddressForm, type: :model do
         expect(@good.errors.full_messages).to include("Phone number can't be blank")
       end
 
-      it "phone_numberが12桁以上では登録できないこと" do
-        @good.phone_number = "123456789012" 
+      it "phone_numberにーが含まれると登録できないこと" do
+        @good.phone_number = "123-4567-8901" 
         @good.valid?
         expect(@good.errors.full_messages).to include("Phone number is invalid")
       end

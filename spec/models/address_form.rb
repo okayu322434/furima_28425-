@@ -38,7 +38,13 @@ RSpec.describe AddressForm, type: :model do
       it "phone_numberが空では登録できないこと" do
         @good.phone_number = nil
         @good.valid?
-        expect(@good.errors.full_messages).to include("Phone number is not a number")
+        expect(@good.errors.full_messages).to include("Phone number can't be blank")
+      end
+
+      it "phone_numberが12桁以上では登録できないこと" do
+        @good.phone_number = "123456789012" 
+        @good.valid?
+        expect(@good.errors.full_messages).to include("Phone number is invalid")
       end
 
 end

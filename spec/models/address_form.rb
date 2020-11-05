@@ -5,7 +5,7 @@ RSpec.describe AddressForm, type: :model do
     before do
       @good = FactoryBot.build(:address_form)
     end
-    
+
       it "postcodeが空では登録できないこと" do
         @good.postcode = nil
         @good.valid?
@@ -67,4 +67,5 @@ RSpec.describe AddressForm, type: :model do
         expect(@good.errors.full_messages).to include("Phone number is invalid")
       end
 
+end
 end

@@ -1,12 +1,23 @@
 class OrdersController < ApplicationController
   before_action :good_params, only: [:index, :create]
 
+  before_action :authenticate_user!, only: [:index]
+
   def index
+  end
+
+  def show
+  end
+
+  def index
+    @order = AddressForm.new
+     if @good.order == nil 
       if user_signed_in? && current_user.id == @good.user_id
       redirect_to root_path
-      else
-      @order = AddressForm.new
       end
+      else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -18,9 +29,6 @@ class OrdersController < ApplicationController
     else
       render 'index'
     end
-
-
-
   end
 
   private
@@ -41,4 +49,5 @@ class OrdersController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
+
 end

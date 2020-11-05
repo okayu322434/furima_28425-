@@ -6,6 +6,10 @@ RSpec.describe AddressForm, type: :model do
       @good = FactoryBot.build(:address_form)
     end
 
+    it "出品ができること" do
+      expect(@good).to be_valid
+    end
+
       it "postcodeが空では登録できないこと" do
         @good.postcode = nil
         @good.valid?

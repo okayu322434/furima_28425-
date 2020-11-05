@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe AddressForm, type: :model do
+  describe '#create' do
     before do
       @good = FactoryBot.build(:address_form)
     end
-
+    
       it "postcodeが空では登録できないこと" do
         @good.postcode = nil
         @good.valid?
@@ -56,6 +57,12 @@ RSpec.describe AddressForm, type: :model do
 
       it "phone_numberにーが含まれると登録できないこと" do
         @good.phone_number = "123-4567-8901" 
+        @good.valid?
+        expect(@good.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it "phone_numberが11桁以上では登録できないこと" do
+        @good.phone_number = "123456789012" 
         @good.valid?
         expect(@good.errors.full_messages).to include("Phone number is invalid")
       end

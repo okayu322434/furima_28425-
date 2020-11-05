@@ -11,6 +11,13 @@ RSpec.describe AddressForm, type: :model do
         expect(@good.errors.full_messages).to include("Postcode can't be blank")
       end
 
+      it "postcodeにーが含まれていないと登録できないこと" do
+        @good.postcode = "1234567" 
+        @good.valid?
+        expect(@good.errors.full_messages).to include("Postcode is invalid. Include hyphen(-)")
+      end
+
+
       it "cityが空では登録できないこと" do
         @good.city = nil
         @good.valid?

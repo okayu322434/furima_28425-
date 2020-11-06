@@ -1,7 +1,19 @@
 class UsersController < ApplicationController
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
 
   def sign_up
     logger.log("help")
   end
 
+  def sign_in
+
+
+
+  private
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+
+  
 end

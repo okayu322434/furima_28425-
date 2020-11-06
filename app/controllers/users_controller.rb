@@ -6,10 +6,6 @@ class UsersController < ApplicationController
     logger.log("help")
   end
 
-  def sign_in
-
-
-
   private
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])

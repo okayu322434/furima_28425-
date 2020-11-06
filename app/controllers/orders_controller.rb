@@ -12,12 +12,14 @@ class OrdersController < ApplicationController
   def index
     @order = AddressForm.new
      if @good.order == nil 
+      if user_signed_in?
       if user_signed_in? && current_user.id == @good.user_id
       redirect_to root_path
       end
       else
       redirect_to root_path
     end
+  end
   end
 
   def create

@@ -5,7 +5,9 @@ class GoodsController < ApplicationController
     @goods = Good.all
   end
   def new
+    if user_signed_in?
     @good = Good.new
+    end
   end
 
   def create

@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
      if @good.order == nil 
       if user_signed_in?
       if user_signed_in? && current_user.id == @good.user_id
-      redirect_to root_path
+      redirect_to user_session_path
       end
       else
       redirect_to root_path

@@ -1,13 +1,13 @@
 class GoodsController < ApplicationController
   before_action :set_good, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new] 
 
   def index
     @goods = Good.all
   end
   def new
-    if user_signed_in?
     @good = Good.new
-    end
+
   end
 
   def create
